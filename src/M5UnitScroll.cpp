@@ -5,7 +5,7 @@
  */
 #include "M5UnitScroll.h"
 
-/*! @brief Initialize the Encoder. */
+/*! @brief Initialize the Scroll. */
 bool M5UnitScroll::begin(TwoWire *wire, uint8_t addr, uint8_t sda, uint8_t scl, uint32_t speed) {
     _wire  = wire;
     _addr  = addr;
@@ -48,19 +48,19 @@ void M5UnitScroll::readBytes(uint8_t addr, uint8_t reg, uint8_t *buffer, uint8_t
 
 /*! @brief Read the encoder value.
     @return The value of the encoder that was read */
-int32_t M5UnitScroll::getEncoderValue(void) {
-    int32_t value = 0;
+int16_t M5UnitScroll::getEncoderValue(void) {
+    int16_t value = 0;
 
-    readBytes(_addr, ENCODER_REG, (uint8_t *)&value, 4);
+    readBytes(_addr, ENCODER_REG, (uint8_t *)&value, 2);
     return value;
 }
 
 /*! @brief Read the encoder inc value.
     @return The value of the encoder that was read */
-int32_t M5UnitScroll::getIncEncoderValue(void) {
-    int32_t value = 0;
+int16_t M5UnitScroll::getIncEncoderValue(void) {
+    int16_t value = 0;
 
-    readBytes(_addr, INC_ENCODER_REG, (uint8_t *)&value, 4);
+    readBytes(_addr, INC_ENCODER_REG, (uint8_t *)&value, 2);
     return value;
 }
 
@@ -93,7 +93,7 @@ uint32_t M5UnitScroll::getLEDColor(void) {
     return value;
 }
 
-void M5UnitScroll::setEncoderValue(int32_t encoder) {
+void M5UnitScroll::setEncoderValue(int16_t encoder) {
     writeBytes(_addr, ENCODER_REG, (uint8_t *)&encoder, 4);
 }
 
