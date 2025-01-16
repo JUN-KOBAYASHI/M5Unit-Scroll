@@ -21,15 +21,18 @@ void setup()
     // cores3, sda:gpio2, scl:gpio1
     // scroll.begin(&Wire, SCROLL_ADDR, 2, 1, 400000U);
 
+    // atoms3, sda:g2, scl:g1
+    // scroll.begin(&Wire, SCROLL_ADDR, 2, 1, 400000U);
+
     Serial.printf("firmware version:%d, i2c address:0x%X\n", scroll.getFirmwareVersion(), scroll.getI2CAddress());
 }
 
 void loop()
 {
     int16_t encoder_value = scroll.getEncoderValue();
-    bool btn_stauts       = scroll.getButtonStatus();
+    bool btn_status       = scroll.getButtonStatus();
     Serial.println(encoder_value);
-    if (!btn_stauts) {
+    if (btn_status) {
         Serial.println("button press");
     }
     delay(20);
