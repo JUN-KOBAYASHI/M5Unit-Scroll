@@ -119,7 +119,7 @@ uint8_t M5UnitScroll::getBootloaderVersion(void) {
 
     uint8_t RegValue;
 
-    _wire->requestFrom(_addr, 1);
+    _wire->requestFrom(_addr, (uint8_t)1);
     RegValue = _wire->read();
     return RegValue;
 }
@@ -131,7 +131,7 @@ uint8_t M5UnitScroll::getFirmwareVersion(void) {
 
     uint8_t RegValue;
 
-    _wire->requestFrom(_addr, 1);
+    _wire->requestFrom(_addr, (uint8_t)1);
     RegValue = _wire->read();
     return RegValue;
 }
@@ -160,7 +160,7 @@ uint8_t M5UnitScroll::getI2CAddress(void) {
 
     uint8_t RegValue;
 
-    _wire->requestFrom(_addr, 1);
+    _wire->requestFrom(_addr, (uint8_t)1);
     RegValue = _wire->read();
     return RegValue;
 }
